@@ -1,0 +1,7 @@
+target
+.git
+.env
+secrets
+dados
+backups
+docker/certs

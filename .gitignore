@@ -1,0 +1,13 @@
+/target/
+.env
+/secrets/
+/docker/certs/
+*.pid
+/dados/
+/logs/
+*.log
+*.log.*
+*.working
+backups/
+/scratch/
+

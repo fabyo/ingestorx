@@ -1,0 +1,21 @@
+[Unit]
+Description=IngestorX - watcher de arquivos
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=__WORKDIR__
+EnvironmentFile=__WORKDIR__/.env
+ExecStart=__WORKDIR__/target/release/xml_watcher
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=__WORKDIR__/dados
+
+[Install]
+WantedBy=default.target

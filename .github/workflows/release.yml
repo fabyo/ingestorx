@@ -1,0 +1,35 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  binaries:
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
+          - os: windows-latest
+            target: x86_64-pc-windows-msvc
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+      - run: cargo build --locked --release --bins --target ${{ matrix.target }}
+      - name: Empacotar Linux
+        if: runner.os == 'Linux'
+        run: tar -C target/${{ matrix.target }}/release -czf ingestorx-${{ matrix.target }}.tar.gz xml_watcher consumer
+      - name: Empacotar Windows
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: Compress-Archive -Path target/${{ matrix.target }}/release/xml_watcher.exe,target/${{ matrix.target }}/release/consumer.exe -DestinationPath ingestorx-${{ matrix.target }}.zip
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: ingestorx-*

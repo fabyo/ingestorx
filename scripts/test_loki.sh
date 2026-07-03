@@ -1,0 +1,1 @@
+curl -v -H 'Content-Type: application/json' -X POST -s 'http://localhost:3100/loki/api/v1/push' --data-raw '{"streams": [{"stream": {"job": "ingestorx"}, "values": [[ "'$(date +%s%N)'", "{\"timestamp\": \"2026-06-22T06:47:01.537936Z\", \"level\": \"INFO\", \"fields\": {\"message\": \"teste manual loki\"}}" ]]}]}'

@@ -1,0 +1,38 @@
+groups:
+  - name: ingestorx
+    rules:
+      - alert: IngestorXWatcherIndisponivel
+        expr: absent(up{job="ingestorx-watcher"} == 1)
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Watcher IngestorX indisponível"
+          description: "Prometheus não coleta métricas do watcher há 2 minutos."
+
+      - alert: IngestorXBacklogCritico
+        expr: ingestorx_claims > 100
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Backlog crítico no IngestorX"
+          description: "Existem mais de 100 arquivos simultaneamente em processamento."
+
+      - alert: IngestorXContingenciaAtiva
+        expr: ingestorx_contingencia_eventos > 0
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Buffer de contingência ativo"
+          description: "Há eventos aguardando reenvio ao RabbitMQ."
+
+      - alert: IngestorXConcorrenciaSaturada
+        expr: ingestorx_processamentos_ativos / ingestorx_processamentos_limite >= 0.95
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Limite de processamento do IngestorX saturado"
+          description: "O watcher opera no limite padrão há pelo menos 5 minutos."

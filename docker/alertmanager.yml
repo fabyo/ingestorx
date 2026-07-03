@@ -1,0 +1,11 @@
+route:
+  receiver: local
+  group_by: [alertname]
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
+
+receivers:
+  # Alertas ficam visíveis no Alertmanager e Grafana. Integrações externas
+  # devem ser adicionadas sem versionar tokens ou senhas.
+  - name: local

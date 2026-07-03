@@ -1,8 +1,6 @@
 ![Logo](https://raw.githubusercontent.com/fabyo/ingestorx/main/logo1.png)
 
-# IngestorX (Watcher)
-
-O **IngestorX** é um agente de captura (*file watcher*) de arquivos fiscais (como XMLs de NF-e, CT-e, NFS-e) ultra-resiliente, de alto desempenho e pronto para produção corporativa. Ele atua como o "portão de entrada" seguro de um pipeline de dados, monitorando diretórios locais ou de rede para detectar a chegada de novos arquivos e notificá-los de forma garantida a uma fila de mensageria (como RabbitMQ).
+O **IngestorX (Watcher)** é um agente de captura (*file watcher*) de arquivos fiscais (como XMLs de NF-e, CT-e, NFS-e) ultra-resiliente, de alto desempenho e pronto para produção corporativa. Ele atua como o "portão de entrada" seguro de um pipeline de dados, monitorando diretórios locais ou de rede para detectar a chegada de novos arquivos e notificá-los de forma garantida a uma fila de mensageria (como RabbitMQ).
 
 ### 🎯 Para que serve e onde usar?
 * **Integração de ERPs**: Ideal para capturar notas fiscais eletrônicas geradas por ERPs legados que apenas gravam arquivos em disco.

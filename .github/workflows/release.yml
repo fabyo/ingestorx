@@ -30,6 +30,6 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: Compress-Archive -Path target/${{ matrix.target }}/release/xml_watcher.exe,target/${{ matrix.target }}/release/consumer.exe -DestinationPath ingestorx-${{ matrix.target }}.zip
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         with:
           files: ingestorx-*

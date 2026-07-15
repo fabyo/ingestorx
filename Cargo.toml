@@ -21,7 +21,7 @@ async-trait = "0.1"
 futures-util = "0.3"
 dotenvy = "0.15.7"
 walkdir = "2.5.0"
-lapin = "3.7.2"
+lapin = "4.10.0"
 uuid = { version = "1", features = ["v4"] }
 chrono = { version = "0.4", features = ["serde"] }
 tokio-util = { version = "0.7", features = ["rt"] }
